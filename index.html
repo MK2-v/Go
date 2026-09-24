@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>به زودی | کانفیگ رایگان</title>
+    <!-- استفاده از فونت وزیرمتن -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #0b0f1c 0%, #1a1f33 100%);
+            padding: 1.5rem;
+            direction: rtl;
+            color: #eef2ff;
+        }
+
+        /* کارت شیشه‌ای */
+        .glass-card {
+            max-width: 700px;
+            width: 100%;
+            background: rgba(20, 28, 48, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 3.5rem;
+            padding: 3rem 2.5rem;
+            box-shadow: 
+                0 30px 50px -15px rgba(0, 0, 0, 0.7),
+                inset 0 1px 2px rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(110, 160, 255, 0.2);
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .glass-card:hover {
+            box-shadow: 
+                0 40px 60px -15px rgba(0, 120, 255, 0.35),
+                inset 0 1px 2px rgba(255, 255, 255, 0.1);
+            border-color: rgba(110, 160, 255, 0.5);
+        }
+
+        /* آیکون ساعت شنی/تایمر */
+        .icon-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 90px;
+            height: 90px;
+            background: radial-gradient(circle at 30% 20%, #2b3b6b, #121a2e);
+            border-radius: 50%;
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(90, 170, 255, 0.4);
+            box-shadow: 0 0 30px rgba(0, 140, 255, 0.25);
+            position: relative;
+        }
+
+        .icon-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px dashed rgba(100, 180, 255, 0.4);
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .icon-wrapper svg {
+            width: 48px;
+            height: 48px;
+            filter: drop-shadow(0 0 8px #3b82f6);
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #ffffff, #a0c8ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 25px rgba(70, 130, 255, 0.5);
+        }
+
+        .highlight {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 0.4rem;
+            background: linear-gradient(135deg, #7aa9ff, #c2d9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #b8c7e8;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-weight: 400;
+            opacity: 0.95;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* نوار پیشرفت تزئینی */
+        .progress-container {
+            width: 80%;
+            margin: 2rem auto 1.8rem;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.6);
+        }
+
+        .progress-bar {
+            width: 65%;
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #a78bfa, #3b82f6);
+            background-size: 200% 100%;
+            border-radius: 100px;
+            animation: shimmer 2.5s infinite linear, glow 2s alternate infinite;
+            box-shadow: 0 0 12px #3b82f6;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes glow {
+            from { opacity: 0.8; filter: brightness(1); }
+            to { opacity: 1; filter: brightness(1.3); }
+        }
+
+        /* دکمه‌های شبکه‌های اجتماعی / تماس */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+            border-radius: 2rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            color: #b0c6f0;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            color: white;
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 20px -8px #3b82f6;
+        }
+
+        .social-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* خط جداکننده */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #415580;
+            font-size: 0.9rem;
+            margin: 1.5rem 0 0.8rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2a3c60, transparent);
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: #6d7ea3;
+            margin-top: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* واکنش‌گرایی */
+        @media (max-width: 480px) {
+            .glass-card {
+                padding: 2rem 1.5rem;
+                border-radius: 2.5rem;
+            }
+
+            .icon-wrapper {
+                width: 75px;
+                height: 75px;
+                margin-bottom: 1.2rem;
+            }
+
+            .icon-wrapper svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            .highlight {
+                font-size: 1.2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .social-btn {
+                width: 48px;
+                height: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glass-card">
+        <!-- آیکون -->
+        <div class="icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor" opacity="0.3"/>
+                <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67V7z" fill="currentColor"/>
+                <circle cx="12" cy="12" r="9" stroke="#3b82f6" stroke-width="1.5" fill="none"/>
+            </svg>
+        </div>
+
+        <!-- متن اصلی -->
+        <h1>
+            این صفحه به زودی
+            <span class="highlight">به کانفیگ رایگان تبدیل می‌شود</span>
+        </h1>
+
+        <p>
+            به‌زودی می‌توانید از کانفیگ‌های رایگان و پرسرعت استفاده کنید. 
+            ما در حال آماده‌سازی زیرساخت هستیم.
+        </p>
+
+        <!-- نوار پیشرفت -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
+        </div>
+
+        <!-- لینک‌های ارتباطی (قابل تغییر) -->
+        <div class="social-links">
+            <a href="#" class="social-btn" aria-label="تلگرام" title="تلگرام">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248c-.18 1.916-.957 6.57-1.353 8.72-.168.9-.5 1.2-.82 1.23-.696.064-1.224-.46-1.898-.902-1.054-.693-1.65-1.125-2.67-1.802-1.183-.78-.416-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.03.014-.146-.054-.206s-.173-.04-.248-.023c-.106.024-1.793 1.14-5.06 3.348-.48.33-.913.49-1.302.482-.43-.01-1.256-.244-1.87-.445-.754-.246-1.354-.376-1.302-.795.027-.218.328-.442.902-.67 3.525-1.535 5.876-2.547 7.052-3.037 3.36-1.397 4.058-1.64 4.513-1.648.1-.002.324.023.47.14.12.096.153.226.167.324.014.1.03.328.016.5z"/>
+                </svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="گیت‌هاب" title="گیت‌هاب">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+            </a>
+            <a href="#" class="social-btn" aria-label="توییتر" title="توییتر">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="divider">✦</div>
+        <div class="note">با ما همراه باشید</div>
+    </div>
+
+</body>
+</html>
